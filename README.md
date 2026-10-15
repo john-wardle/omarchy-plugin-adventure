@@ -4,6 +4,13 @@ A keyboard-first, AI-powered text adventure for Omarchy. Begin in any place and 
 
 Adventure runs fully locally through Ollama. No OpenAI account, API key, internet connection, or cloud billing is required while playing.
 
+## Attribution
+
+This is a derivative distribution of **Adventure for Omarchy** by `kszx11`.
+The original source repository is [kszx11/omarchy-plugin-adv](https://github.com/kszx11/omarchy-plugin-adv), and the original author, plugin identity, MIT license, and copyright are retained. This repository does not claim authorship of the original Adventure work.
+
+The changes here are packaging and local-runtime changes: `install.sh` checks and installs Ollama, starts the local service, pulls `qwen2.5:3b` when needed, and installs this repository's copy into Omarchy. See [ATTRIBUTION.md](ATTRIBUTION.md) for the full derivative-work notice.
+
 ![Adventure gameplay preview](preview.png)
 
 ## Exploration
