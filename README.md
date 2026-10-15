@@ -10,26 +10,28 @@ Adventure runs fully locally through Ollama. No OpenAI account, API key, interne
 
 Every new adventure opens in a broad named region with at least three meaningful routes. As you travel, the game reveals connected settlements, wilderness, landmarks, and other named locations; the map records routes you have discovered. Ordinary scenes keep at least two ways forward, while true endings and temporary defeats are the only intentional exceptions.
 
-## What you need
+## Requirements
 
 - Omarchy 4.0 (Quattro) with Quickshell plugin support.
-- Ollama running locally with the `qwen2.5:3b` model available.
+- An internet connection during installation so the installer can download Ollama and the model if needed.
 
-For example, install and prepare the model with:
+## Install everything
 
-```bash
-ollama pull qwen2.5:3b
-```
-
-## Install
-
-Install from the Adventure repository:
+This repository is self-contained. Download it from GitHub, open a terminal in the extracted directory, and run:
 
 ```bash
-omarchy plugin add https://github.com/kszx11/omarchy-plugin-adv.git --enable
+bash install.sh
 ```
 
-Omarchy will warn that plugins run unsandboxed; install only repositories you trust. When prompted, choose where Adventure should appear in the bar. Click its icon to open the game.
+The installer checks for Ollama, installs it when missing, enables and starts `ollama.service`, pulls `qwen2.5:3b` when missing, installs this Adventure copy into Omarchy's local plugin directory, moves duplicate or old Adventure copies out of the plugin scan directory, and enables Adventure in the bar.
+
+The model can be changed for testing with an environment variable:
+
+```bash
+ADVENTURE_OLLAMA_MODEL=qwen2.5:3b bash install.sh
+```
+
+Omarchy plugins run unsandboxed inside the shell process. Install only a copy of this repository that you trust. The installer uses the official Ollama installer only when Ollama is not already installed.
 
 You can also open Adventure from a terminal:
 
@@ -40,7 +42,7 @@ omarchy-shell shell summon io.github.kszx11.adventure '{}'
 ## Start playing
 
 1. Open Adventure from its bar icon.
-2. Make sure Ollama is running locally and the `qwen2.5:3b` model is available.
+2. Make sure the installer reports that Ollama and the model are ready.
 3. Describe the place and time for your adventure, then select **New game**.
 4. Use the numbered choices or type commands such as `look`, `go to <place>`, `talk to <person>`, or `examine <thing>`.
 
@@ -48,9 +50,7 @@ Adventure sends requests only to Ollama at `127.0.0.1:11434`; no credentials or 
 
 ## Updating
 
-```bash
-omarchy plugin update io.github.kszx11.adventure
-```
+Download the newer repository copy and run `bash install.sh` again. The installer backs up the current Adventure plugin outside Omarchy's plugin scan directory before installing the new copy.
 
 ## Remove
 
