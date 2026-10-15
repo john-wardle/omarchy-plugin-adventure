@@ -25,3 +25,7 @@ plugin:
 The Adventure runtime is configured to send gameplay requests only to the
 local Ollama endpoint at `127.0.0.1:11434`. The original `LICENSE` file is
 retained and applies to the original work.
+
+The repository's `preview.png` is a new gameplay screenshot created for this
+derivative distribution by `john-wardle`; it is not copied from the original
+repository.
