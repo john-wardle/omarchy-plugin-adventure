@@ -43,7 +43,7 @@ Omarchy plugins run unsandboxed inside the shell process. Install only a copy of
 You can also open Adventure from a terminal:
 
 ```bash
-omarchy-shell shell summon io.github.kszx11.adventure '{}'
+omarchy-shell shell summon io.github.john-wardle.adventure-ollama '{}'
 ```
 
 ## Start playing
@@ -62,7 +62,7 @@ Download the newer repository copy and run `bash install.sh` again. The installe
 ## Remove
 
 ```bash
-omarchy plugin remove io.github.kszx11.adventure
+omarchy plugin remove io.github.john-wardle.adventure-ollama
 ```
 
 Removing the plugin keeps your saved adventures. If you also want to erase them, delete the `~/.local/state/omarchy-adventure/` directory.

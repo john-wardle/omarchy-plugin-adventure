@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "io.github.kszx11.adventure",
-  "name": "Adventure",
+  "id": "io.github.john-wardle.adventure-ollama",
+  "name": "Adventure Ollama",
   "version": "0.1.0",
-  "author": "kszx11",
+  "author": "john-wardle",
   "license": "MIT",
   "description": "A keyboard-first, fully local AI text adventure for Omarchy, powered by Ollama. No OpenAI API key or cloud account required.",
   "kinds": ["bar-widget"],
@@ -11,7 +11,7 @@
     "barWidget": "BarWidget.qml"
   },
   "barWidget": {
-    "displayName": "Adventure",
+    "displayName": "Adventure Ollama",
     "description": "Begin a fully local AI-powered adventure in any place and time with Ollama.",
     "category": "Fun",
     "aliases": ["adventure", "game"],

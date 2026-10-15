@@ -6,7 +6,7 @@ This repository is a derivative distribution of **Adventure for Omarchy** by
 - Original repository: <https://github.com/kszx11/omarchy-plugin-adv>
 - Original author/maintainer: `kszx11`
 - Original license: MIT
-- Original plugin ID: `io.github.kszx11.adventure`
+- Original plugin ID: `io.github.kszx11.adventure` (this derivative uses `io.github.john-wardle.adventure-ollama`)
 
 The original Adventure source, design, manifest identity, and copyright remain
 attributed to the original author. This repository does not claim authorship

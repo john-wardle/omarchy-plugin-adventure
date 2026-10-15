@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PLUGIN_ID="io.github.kszx11.adventure"
+PLUGIN_ID="io.github.john-wardle.adventure-ollama"
+LEGACY_PLUGIN_ID="io.github.kszx11.adventure"
 MODEL="${ADVENTURE_OLLAMA_MODEL:-qwen2.5:3b}"
 PLUGIN_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/omarchy/plugins"
 TARGET="$PLUGIN_DIR/$PLUGIN_ID"
@@ -61,6 +62,10 @@ install_model() {
 install_plugin() {
     mkdir -p "$PLUGIN_DIR" "$BACKUP_DIR"
 
+    if [[ -e "$PLUGIN_DIR/$LEGACY_PLUGIN_ID" || -L "$PLUGIN_DIR/$LEGACY_PLUGIN_ID" ]]; then
+        omarchy plugin disable "$LEGACY_PLUGIN_ID" >/dev/null 2>&1 || true
+    fi
+
     if [[ -e "$TARGET" || -L "$TARGET" ]]; then
         local stamp backup
         stamp=$(date +%Y%m%d-%H%M%S)
@@ -76,7 +81,7 @@ install_plugin() {
         backup="$BACKUP_DIR/$(basename "$old_copy")-$stamp"
         log "Moving duplicate plugin copy to $backup"
         mv -- "$old_copy" "$backup"
-    done < <(find "$PLUGIN_DIR" -mindepth 1 -maxdepth 1 -type d -name "$PLUGIN_ID*" -print0)
+    done < <(find "$PLUGIN_DIR" -mindepth 1 -maxdepth 1 -type d \( -name "$PLUGIN_ID*" -o -name "$LEGACY_PLUGIN_ID*" \) -print0)
 
     mkdir -p "$TARGET"
     tar --exclude=.git -C "$SOURCE_DIR" -cf - . | tar -C "$TARGET" -xf -

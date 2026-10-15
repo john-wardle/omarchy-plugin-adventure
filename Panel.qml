@@ -61,7 +61,7 @@ Item {
     }
     function requestClose() {
         if (hostWidget && typeof hostWidget.close === "function") hostWidget.close()
-        else if (shell && typeof shell.hide === "function") shell.hide("io.github.kszx11.adventure")
+        else if (shell && typeof shell.hide === "function") shell.hide("io.github.john-wardle.adventure-ollama")
         else gameWindow.visible = false
     }
     function addMessage(kind, text) {

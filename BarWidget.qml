@@ -3,7 +3,7 @@ import qs.Ui
 
 BarWidget {
     id: root
-    moduleName: "io.github.kszx11.adventure"
+    moduleName: "io.github.john-wardle.adventure-ollama"
     implicitWidth: launcher.implicitWidth
     implicitHeight: launcher.implicitHeight
     readonly property bool opened: panelLoader.item ? panelLoader.item.opened : false
