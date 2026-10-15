@@ -20,7 +20,7 @@ Every new adventure opens in a broad named region with at least three meaningful
 ## Requirements
 
 - Omarchy 4.0 (Quattro) with Quickshell plugin support.
-- An internet connection during installation so the installer can download Ollama and the model if needed.
+- An internet connection during installation so the installer can install Ollama from Arch's signed package repository and download the model if needed.
 
 ## Install everything
 
@@ -30,7 +30,7 @@ This repository is self-contained. Download it from GitHub, open a terminal in t
 bash install.sh
 ```
 
-The installer checks for Ollama, installs it when missing, enables and starts `ollama.service`, pulls `qwen2.5:3b` when missing, installs this Adventure copy into Omarchy's local plugin directory, moves duplicate or old Adventure copies out of the plugin scan directory, and enables Adventure in the bar.
+The installer checks for Ollama, installs the Arch `ollama` package when missing, enables and starts `ollama.service`, pulls `qwen2.5:3b` when missing, installs this Adventure copy into Omarchy's local plugin directory, moves duplicate or old Adventure copies out of the plugin scan directory, and enables Adventure in the bar.
 
 The model can be changed for testing with an environment variable:
 
@@ -38,7 +38,7 @@ The model can be changed for testing with an environment variable:
 ADVENTURE_OLLAMA_MODEL=qwen2.5:3b bash install.sh
 ```
 
-Omarchy plugins run unsandboxed inside the shell process. Install only a copy of this repository that you trust. The installer uses the official Ollama installer only when Ollama is not already installed.
+Omarchy plugins run unsandboxed inside the shell process. Install only a copy of this repository that you trust. When Ollama is not already installed, the installer uses Arch's signed `ollama` package and does not execute downloaded installer content.
 
 You can also open Adventure from a terminal:
 

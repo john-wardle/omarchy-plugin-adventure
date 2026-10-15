@@ -14,7 +14,7 @@ fail() { printf '[adventure-install] ERROR: %s\n' "$*" >&2; exit 1; }
 
 [[ "$SOURCE_DIR" != "$TARGET" ]] || fail "run this installer from the downloaded repository, not the installed plugin directory"
 command -v omarchy >/dev/null 2>&1 || fail "Omarchy was not found on PATH"
-command -v curl >/dev/null 2>&1 || fail "curl is required to install and check Ollama"
+command -v curl >/dev/null 2>&1 || fail "curl is required to check Ollama"
 
 install_ollama() {
     if command -v ollama >/dev/null 2>&1; then
@@ -22,8 +22,12 @@ install_ollama() {
         return
     fi
 
-    log "Ollama is missing; running the official Ollama installer"
-    curl -fsSL https://ollama.com/install.sh | sh
+    if ! command -v pacman >/dev/null 2>&1; then
+        fail "Ollama is missing and pacman was not found; install Ollama from your distribution's trusted package manager"
+    fi
+
+    log "Ollama is missing; installing it from Arch's signed package repository"
+    sudo pacman -S --needed --noconfirm ollama
     command -v ollama >/dev/null 2>&1 || fail "Ollama installation finished, but ollama is not on PATH"
 }
 
